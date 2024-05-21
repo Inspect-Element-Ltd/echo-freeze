@@ -1,0 +1,9 @@
+name: EchoFreeze
+version: '1.0'
+main: ac.echo.Main
+
+commands:
+  freeze:
+    aliases:
+      - ss
+      - unfreeze

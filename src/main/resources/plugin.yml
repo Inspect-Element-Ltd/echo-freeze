@@ -1,0 +1,9 @@
+name: EchoFreeze
+version: '${project.version}'
+main: ac.echo.Main
+
+commands:
+  freeze:
+    aliases:
+      - ss
+      - unfreeze

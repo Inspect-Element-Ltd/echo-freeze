@@ -1,0 +1,16 @@
+Echo:
+  Staff: "echo.staff" # Permission Node
+  Freeze-Message-Delay: 3 # Time in seconds
+  Api:
+    URL: "https://api.echo.ac/v1/user/pin"
+    Key: "YOUR_API_KEY"
+  Frozen:
+    Gui:
+      Rows: 3
+      Title: "&4You Are Frozen!"
+    Ban:
+      Refusal: "ban {TARGET} 30d Refusal To SS -s"
+      Admitted: "ban {TARGET} 14d Admitted -s"
+  Allowed-Commands:
+    - "msg"
+    - "r"
