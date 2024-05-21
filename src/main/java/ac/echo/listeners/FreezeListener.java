@@ -12,7 +12,9 @@ import ac.echo.util.Echo;
 import ac.echo.util.Messages;
 import ac.echo.util.item.ItemBuilder;
 import ac.echo.util.item.ItemDataColor;
+import net.md_5.bungee.api.chat.*;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -218,7 +220,27 @@ public class FreezeListener implements Listener {
         if (FreezeHandler.getInstance().isFrozen(player)) {
             for (Player staff : Bukkit.getOnlinePlayers()) {
                 if (staff.hasPermission(Config.Default.getConfig(false).getString("Echo.Staff"))) {
-                    staff.sendMessage(Main.getInstance().c(Messages.FREEZE_PLAYER_QUIT_FROZEN).replace("{TARGET}", player.getName()));
+
+                    HoverEvent hoverEvent = new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                            new ComponentBuilder(Main.getInstance().c(
+                                    "&cName: &f" + player.getName() + "\n" +
+                                    "&cReason: &f" + "Logged Out While Frozen\n" +
+                                    "&cDuration: &f30 days"
+                            )).create());
+
+                    ClickEvent clickEvent = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/" + Config.Default.getConfig(false).getString("Echo.Frozen.Ban.Quit").replace("{TARGET}", player.getName()));
+
+                    TextComponent textComponent = new TextComponent(Main.getInstance().c(Messages.FREEZE_PLAYER_QUIT_FROZEN).replace("{TARGET}", player.getName()));
+
+                    TextComponent click = new TextComponent(Main.getInstance().c(" &7(Ban)"));
+                    click.setHoverEvent(hoverEvent);
+                    click.setClickEvent(clickEvent);
+
+                    textComponent.addExtra(click);
+
+                    staff.spigot().sendMessage(textComponent);
+
+                    //staff.sendMessage(Main.getInstance().c(Messages.FREEZE_PLAYER_QUIT_FROZEN).replace("{TARGET}", player.getName()));
                 }
             }
         }

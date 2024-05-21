@@ -50,6 +50,11 @@ public class FreezeHandler {
         new BukkitRunnable() {
             @Override
             public void run() {
+                if (player == null) {
+                    this.cancel();
+                    return;
+                }
+
                 if (isFrozen(player)) {
                     for (String line : Messages.FREEZE_MESSAGE) {
                         player.sendMessage(Main.getInstance().c(line));

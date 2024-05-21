@@ -19,6 +19,7 @@ ac\echo\listeners\FreezeListener$4.class
 ac\echo\api\command\Command.class
 ac\echo\config\Config.class
 ac\echo\api\gui\gui\GUIUpdate.class
+ac\echo\handler\FreezeHandler$1.class
 ac\echo\api\command\sub\SubCommand.class
 ac\echo\api\command\exception\CommandException.class
 ac\echo\api\gui\gui\GUICloseUpdate.class
