@@ -1,0 +1,7 @@
+.idea/
+.vscode/
+.zed/
+target/
+
+.DS_Store
+.jar
